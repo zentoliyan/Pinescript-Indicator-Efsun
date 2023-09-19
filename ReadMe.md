@@ -27,3 +27,17 @@ The indicator offers users two adjustable parameters: MA Period and Percentage. 
 The "Efsun" indicator is effective on timeframes of 60 minutes and below. It can be applied to any financial instrument or market, serving as a guide in the decision-making process for traders.
 
 Note: This indicator is for educational purposes only and requires thorough examination and testing before adapting it to your own trading strategies.
+
+══════════════════════════════════════════════════════════════════════════
+
+![XU100_2023-09-19_09-21-03](https://github.com/zentoliyan/Pinescript-Indicator-Efsun/assets/60288122/8aec8d4e-099d-4c0b-8622-2f6694952b5c)
+
+![TSLA_2023-09-19_09-21-21](https://github.com/zentoliyan/Pinescript-Indicator-Efsun/assets/60288122/731f0b84-7a37-4e7e-a55a-30696fccf255)
+
+![NASDAQ_2023-09-19_09-21-50](https://github.com/zentoliyan/Pinescript-Indicator-Efsun/assets/60288122/de03e8c3-e750-4a77-9426-2780d4c63f79)
+
+![SPX_2023-09-19_09-22-16](https://github.com/zentoliyan/Pinescript-Indicator-Efsun/assets/60288122/d74dfd13-735f-4607-bfc7-de0877507398)
+
+![HMC_2023-09-19_09-23-02](https://github.com/zentoliyan/Pinescript-Indicator-Efsun/assets/60288122/46020685-5ce4-41e6-b86d-f9d66164984d)
+
+
