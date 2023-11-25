@@ -1,0 +1,46 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © huseyin_oymak
+
+//@version=5
+indicator("Efsun MTF", overlay = true)
+
+hourlyClose = request.security(syminfo.tickerid, "60", close)
+prevHourlyClose = request.security(syminfo.tickerid, "60", close[1])
+
+// Saat değişimi koşulunu kontrol edin
+hourlyChange = hourlyClose != prevHourlyClose
+
+YGT = input.int(10)
+KYN = input.float(1.0)
+var float RX = 0.0
+RX := hourlyChange ? ((2 / (YGT + 1)) * hourlyClose[1] + ((1-(2 / (YGT + 1))) * nz(RX[1]))) : RX[1]
+ema = ta.ema(RX, 1)
+
+
+getMost(_data, _percent) =>
+
+    avg1 = _data - (_data * _percent / 100)
+    avg2 = _data + (_data * _percent / 100)
+
+    var float line1 = na
+    var float line2 = na
+
+    line1 := na(line1[1]) ? avg1 : (_data < line1[1]) ? avg1 : (avg1 > line1[1]) ? avg1 : line1[1]
+    line2 := na(line2[1]) ? avg2 : (_data > line2[1]) ? avg2 : (avg2 < line2[1]) ? avg2 : line2[1]
+
+    cond1 = ta.crossover(_data, line2[1])
+    cond2 = ta.crossunder(line1[1], _data)
+
+    s1 = ta.barssince(cond1) < ta.barssince(cond2)
+    s2 = s1 ? line1 : line2
+
+    [s2, _data]
+
+[most, exMov] = getMost(ema, KYN)
+
+i_res = input.timeframe(defval = '60', title = "Resolution")
+most_tf = request.security(syminfo.tickerid, timeframe = i_res, expression = most)
+exMov_tf = request.security(syminfo.tickerid, timeframe = i_res, expression = exMov)
+
+plot(most_tf, "MOST", color=color.yellow)
+plot(exMov_tf, "ExMov", color=color.white)
